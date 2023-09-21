@@ -22,8 +22,22 @@
 örnek çıktı aşağıdaki gibidir
 ![resim](https://github.com/werhereitacademy/week_4/assets/141542413/caaecfd5-db10-4bc7-985b-0f1a4fb208d4)
 ##### Uyelik_islemleri.py:
-*Burada üye bilgisi(üye isimler ve toplam üye sayisi) ,üye güncelleme, üye ekleme, üye arama, üye silme, kitap ödünç verme ve kitap iade etme gibi işlemler yapılacaktır. Ayrıca üyeler uye.Json dosyasına kaydedilmelidir. Kitap ödünç verme işlemi yapılırken mutlak suretle 
+* Burada üye bilgisi(üye isimler ve toplam üye sayisi) ,üye güncelleme, üye ekleme, üye arama, üye silme, kitap ödünç verme ve kitap iade etme gibi işlemler yapılacaktır. Ayrıca üyeler uye.Json dosyasına kaydedilmelidir. Kitap ödünç verme işlemi yapılırken mutlak suretle 
 * - kitabin ödünç verildigi tarih ve saat ve 2 hafta sonra iade edecek şekilde tarih bilgisi eklenmelidir ve bu bilgiler takip.json dosyasına kaydedilmelidir.
+    ![resim](https://github.com/werhereitacademy/week_4/assets/141542413/6728d7fa-2aa2-49a8-b843-cccd9a397311)
+* bu işlemi kendi oluşturduğumuz zaman py modulunden  yapacağız.
+* - takip.json dosyasına kaydedildikten sonra ödünç verilen kitap Kitap.json dan silinmelidir ki bir başkasi almak istedigi zaman gozukmesin.
+###### Not: uye.json ve takip.json dosyasını kendiniz oluşturacaksınız.
+![resim](https://github.com/werhereitacademy/week_4/assets/141542413/49f04d87-bece-4493-b62f-022cfa3d9201)
+* Uye.json a kaydedeceğiniz veriler aşağıdaki gibi olmalıdır :
+ ![resim](https://github.com/werhereitacademy/week_4/assets/141542413/8761111e-11f6-47ba-9605-cc8b33be84b3)
+##### zaman.py :
+* üyelerimize kitabımızı 2 haftalık süreyle ödünç vermekteyiz.Bu yüzden ödünç verdiğimiz andaki saat ve tarihi ile geri iade edilmesi gereken tarihi bu modül sayesinde kaydedeceğiz.
+Bu modülümüzü çalıştırdığımızda bize şuan ki zamanı ve 2 hafta sonraki zamanı return etmesini istiyoruz.
+![resim](https://github.com/werhereitacademy/week_4/assets/141542413/7a7c7274-32ef-42e9-b3c7-9d2094752893)
+###### Takip.json a kaydedeceğiniz veriler aşağıdaki gibi olmalıdır :
+![resim](https://github.com/werhereitacademy/week_4/assets/141542413/3948f87d-bf87-49a6-a9d6-75bcdf155afd)
+
 ## Hackerrank Questions
 
 1. Diagonal Difference: https://www.hackerrank.com/challenges/diagonal-difference/problem
