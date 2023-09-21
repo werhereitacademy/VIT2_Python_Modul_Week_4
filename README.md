@@ -27,7 +27,9 @@
 ##### Uyelik_islemleri.py:
 * Burada üye bilgisi(üye isimler ve toplam üye sayisi) ,üye güncelleme, üye ekleme, üye arama, üye silme, kitap ödünç verme ve kitap iade etme gibi işlemler yapılacaktır. Ayrıca üyeler uye.Json dosyasına kaydedilmelidir. Kitap ödünç verme işlemi yapılırken mutlak suretle 
 * - kitabin ödünç verildigi tarih ve saat ve 2 hafta sonra iade edecek şekilde tarih bilgisi eklenmelidir ve bu bilgiler takip.json dosyasına kaydedilmelidir.
-    ![resim](https://github.com/werhereitacademy/week_4/assets/141542413/6728d7fa-2aa2-49a8-b843-cccd9a397311)
+    
+![resim](https://github.com/werhereitacademy/week_4/assets/141542413/6728d7fa-2aa2-49a8-b843-cccd9a397311)
+
 * bu işlemi kendi oluşturduğumuz zaman py modulunden  yapacağız.
 * - takip.json dosyasına kaydedildikten sonra ödünç verilen kitap Kitap.json dan silinmelidir ki bir başkasi almak istedigi zaman gozukmesin.
 ###### Not: uye.json ve takip.json dosyasını kendiniz oluşturacaksınız.
