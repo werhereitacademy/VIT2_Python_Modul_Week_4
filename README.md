@@ -32,7 +32,7 @@
 
 * bu işlemi kendi oluşturduğumuz zaman py modulunden  yapacağız.
 * - takip.json dosyasına kaydedildikten sonra ödünç verilen kitap Kitap.json dan silinmelidir ki bir başkasi almak istedigi zaman gozukmesin.
-###### Not: uye.json ve takip.json dosyasını kendiniz oluşturacaksınız.
+#####  Not:uye.json ve takip.json dosyasını kendiniz oluşturacaksınız.
 ![resim](https://github.com/werhereitacademy/week_4/assets/141542413/49f04d87-bece-4493-b62f-022cfa3d9201)
 * Uye.json a kaydedeceğiniz veriler aşağıdaki gibi olmalıdır :
  ![resim](https://github.com/werhereitacademy/week_4/assets/141542413/8761111e-11f6-47ba-9605-cc8b33be84b3)
