@@ -38,7 +38,7 @@ Bu modülümüzü çalıştırdığımızda bize şuan ki zamanı ve 2 hafta son
 ###### Takip.json a kaydedeceğiniz veriler aşağıdaki gibi olmalıdır :
 ![resim](https://github.com/werhereitacademy/week_4/assets/141542413/3948f87d-bf87-49a6-a9d6-75bcdf155afd)
 
-## Hackerrank Questions
+## Hackerrank Questions 
 
 1. Diagonal Difference: https://www.hackerrank.com/challenges/diagonal-difference/problem
 
