@@ -15,6 +15,15 @@
   ![resim](https://github.com/werhereitacademy/week_4/assets/141542413/7708052f-5b9c-42ed-b4c0-1a6e92d5fbf6)
 ##### kitap_işlemleri.py :
 * Bu modulde kitap bilgisi(kayitli kitaplar ve toplam adeti), ekleme,silme,arama,update fonksiyonlarini yazacaksiniz. Verilerimizi kitap.json dosyasina kaydedecegiz. Kitap.json dosyasi size hazir verilecek (dileyen kendide olusturabilir). Os Modulu ile dosya kontrolu mutlaka yapilmalidir. Aşağıda kitap işlemleri için fonksiyon örneklemeleri bulabilirsin fakat buna uymak zorunda değilsiniz, kendi planlamanızı da yapabilirsiniz.
+ ![resim](https://github.com/werhereitacademy/week_4/assets/141542413/753abd94-38de-417e-afd8-0540ba8aa591)
+* Kitap.json dosyasinda pekcok veri bulunmaktadir. Biz asagidaki veriler ile calisacagiz. Yeni veri eklerken veya arama yaparken bunlari baz alacagiz.
+ ![resim](https://github.com/werhereitacademy/week_4/assets/141542413/ff5f0b47-5244-4b58-b8ae-7c5dff092a73)
+##### Kitap.json : 
+örnek çıktı aşağıdaki gibidir
+![resim](https://github.com/werhereitacademy/week_4/assets/141542413/caaecfd5-db10-4bc7-985b-0f1a4fb208d4)
+##### Uyelik_islemleri.py:
+*Burada üye bilgisi(üye isimler ve toplam üye sayisi) ,üye güncelleme, üye ekleme, üye arama, üye silme, kitap ödünç verme ve kitap iade etme gibi işlemler yapılacaktır. Ayrıca üyeler uye.Json dosyasına kaydedilmelidir. Kitap ödünç verme işlemi yapılırken mutlak suretle 
+* - kitabin ödünç verildigi tarih ve saat ve 2 hafta sonra iade edecek şekilde tarih bilgisi eklenmelidir ve bu bilgiler takip.json dosyasına kaydedilmelidir.
 ## Hackerrank Questions
 
 1. Diagonal Difference: https://www.hackerrank.com/challenges/diagonal-difference/problem
