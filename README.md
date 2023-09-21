@@ -40,7 +40,8 @@
 * üyelerimize kitabımızı 2 haftalık süreyle ödünç vermekteyiz.Bu yüzden ödünç verdiğimiz andaki saat ve tarihi ile geri iade edilmesi gereken tarihi bu modül sayesinde kaydedeceğiz.
 Bu modülümüzü çalıştırdığımızda bize şuan ki zamanı ve 2 hafta sonraki zamanı return etmesini istiyoruz.
 ![resim](https://github.com/werhereitacademy/week_4/assets/141542413/7a7c7274-32ef-42e9-b3c7-9d2094752893)
-###### Takip.json a kaydedeceğiniz veriler aşağıdaki gibi olmalıdır :
+##### Takip.json a kaydedeceğiniz veriler aşağıdaki gibi olmalıdır :
+
 ![resim](https://github.com/werhereitacademy/week_4/assets/141542413/3948f87d-bf87-49a6-a9d6-75bcdf155afd)
 
 ## Hackerrank Questions 
