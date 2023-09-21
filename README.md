@@ -7,8 +7,10 @@
 
 #### Projeyi detaylandıracak olursak:
  * main.py, kitap_işlemleri.py,üye_işlemleri.py, zaman.py  dosyalarindan oluşacak.
-- Main.py:
-Projemizi ana dosyası main.py dosyası olacak. işlemler bu dosyadan yürütülecek diğer Python dosyaları bir modül olarak bu bölümden çağrılacak . Örneğin kitap ekleme kitap silme ,üye ekleme , üyeye kitap verme ,üye kontrolü buradan yapılacak.
+##### Main.py:
+* Projemizi ana dosyası main.py dosyası olacak. işlemler bu dosyadan yürütülecek diğer Python dosyaları bir modül olarak bu bölümden çağrılacak . Örneğin kitap ekleme kitap silme ,üye ekleme , üyeye kitap verme ,üye kontrolü buradan yapılacak.
+ ![resim](https://github.com/werhereitacademy/week_4/assets/141542413/fd0ea3eb-d5cc-4991-b67d-94ebf42ee8d9)
+
 
 ## Hackerrank Questions
 
