@@ -1,0 +1,82 @@
+import json
+import os
+import csv
+import sys
+#Kitap.json dosyasi okunur
+def arsiv(): #2/1
+    with open('kitap.json', 'r', encoding='utf-8') as dosya:
+        kutuphane = json.load(dosya)
+        for arsivci in kutuphane:
+            print(arsivci)
+
+def oku(arsiv):
+    with open('kitap.json', 'r', encoding='utf-8') as f:
+        kutuphane = json.load(f)
+    return kutuphane
+
+
+#---------------
+# kitap.json dosyasina veriler yazilir.
+def kayit(veri): #yazmak için kullan.
+    with open('kitap.json', 'w',encoding='utf-8') as klasor:
+            json.dump(veri, klasor, indent=4)
+#---------
+# kitap ekleme
+def kitap_ekle(Barkod, Dil, Fiyat, Kitap_Adi, Yayinevi, Yazar): #2/2
+    #with open('deneme2.json', 'r', encoding='utf-8') as dosya:
+    #    kutuphane = json.load(dosya) #İlk bunları hazırlamıştım. Sonrasında fonk'dan (kutuphane = oku('kitap.json')) çağırdım.
+    kutuphane = oku('kitap.json')
+    Barkod = int(input('Bir Barkod Numarası Giriniz:'))
+    Dil = input('Kitap Dilini Giriniz:').title()
+    Fiyat = int(input('Satış Fiyatını Giriniz:'))
+    Kitap_Adi = input('Bir Kitap Adı Giriniz:').title()
+    Yayinevi = input('Kitabın Yayın Evini Giriniz:').title()
+    Yazar = input('Kitabın Yazarının Adını Giriniz:').title()
+
+    kitap = {
+        'Barkod': Barkod,
+             'Dil': Dil,
+             'Fiyat': Fiyat,
+             'Kitap Adi': Kitap_Adi,
+             'Yayın Evi': Yayinevi,
+             'Yazar': Yazar
+    }
+    kutuphane.append(kitap)  #Listeye Eklendi.
+    print(f"{Barkod} Numaralı {Kitap_Adi} Adlı Kitap Kütüphaneye Eklendi.")
+    kayit(kutuphane)  # Kitabı Json'a eklemek için. Bu oke ama düzgün eklemiyor ondan yeniden ekleyelim.
+
+
+#kitap_ek(Barkod=None,Dil= None, Fiyat= None, Kitap_Adi=None,Yayinevi=None,Yazar=None) Ayrıca çalıştırırken kontrol ediyordum.
+#--------
+#kitap silme
+def kitap_sil(silinecek_veri): #2/4 
+    silinecek_veri = int(input("Silmek istediğiniz Barkod Numarasını Giriniz:"))
+    #with open('deneme2.json', 'r', encoding='utf-8') as dosya:
+    #    kutuphane = json.load(dosya)
+    kagit = oku('kitap.json')
+    for daksil in kagit:
+        if daksil['Barkod'] == silinecek_veri:
+            print(f'{daksil} Kayıtlı Kitap Silinmiştir!')
+            kagit.remove(daksil)
+            break
+    else:
+        print(f'{silinecek_veri} Barkod Numaralı Kitap Kaydı Bulunamadı!')
+    kayit(kagit)
+
+#-------------
+# kitap arama
+def kitap_ara(arama): #2/3
+    arama = int(input("Aramak İstediğiniz Kitabın ID'Numarasını Yazınız:"))
+    tarama = oku('kitap.json')
+
+    for bytc in tarama:
+        if bytc.get('Barkod') == arama:
+            print(bytc)
+            break
+    else:
+        print(f'{arama} Numarasına İlişkin Kayıt Bulunmamaktadır!')
+
+
+if __name__ == "__main__":
+    print("islem")
+
