@@ -1,0 +1,96 @@
+import kitap_islemleri
+import csv
+import json
+import os
+
+
+#Musterinin kitabı aldıgı tarih ve teslim tarihi verisini  isle
+import zaman
+#---------------------------------
+#uye.json dosyası yazma olusturma
+def uye_guncelle(uye): #main 1/2
+    with open('uye.json', 'w', encoding='utf-8') as dosya:
+        json.dump(uye, dosya, indent=4)
+
+def dosya_oku(okunacak): #en son bunu kısaltmayı dene.
+    with open('uye.json', 'r', encoding='utf-8') as dosy:
+        uyeler = json.load(dosy)
+    return uyeler
+
+# ------------
+# Uye.json dosyasi yazma olusturma
+def uye_kontrol(): #tüm üye kontrolü - Main 1/1 #Bunu bir daha kontrol et. csv olmasın
+    with open('uye.json', 'r', encoding='utf-8') as folder:
+        mevcut = json.load(folder)
+        for satir in mevcut: #mevcut = liste, listelerdeki herşeyi kullanabilirsin.
+            print(satir)
+        #mevcut = csv.reader(folder) #İlk başta bununla yapmıştım. Sonrasında Json'a çevirdim.
+        #for satir in mevcut:
+        #    print(satir)
+
+
+
+#--------------------------
+#uye ekle
+def uye_ekle(id,Uye_Adi,Tel,Adres):
+    #with open('uye.json', 'r', encoding='utf-8') as dosya:
+    #    uyeler = json.load(dosya)
+    uyeler = dosya_oku('uye.json')
+    id = int(input('Bir ID Numarası Giriniz:'))
+    Uye_Adi = input('Üye Adı Giriniz:').title()
+    Tel = input('Üyenin Telefon Numarasını Giriniz:').title()
+    Adres = input('Üyenin Adresini Giriniz:').title()
+
+    uye = {
+        'id': id,
+        'Uye_Adi': Uye_Adi,
+        'Tel': Tel,
+        'Adres': Adres
+    }
+    uyeler.append(uye)  # Burda yeni eklenen veriyi, açıkta bekleyen json okumaya ekleyip sonrasında yeni
+    # şekilde yazıyoruz.
+    print(f"{id} Numaralı {Uye_Adi} Adlı Üye Kaydedildi.")
+    uye_guncelle(uyeler)
+    #with open('uye.json', 'w', encoding='utf-8') as dosya:
+    #    json.dump(uyeler, dosya, indent=4)
+
+
+    #print(uyeler)
+
+#---------------------
+#Uye Arama
+def uye_ara():
+    arama = int(input("Aramak İstediğiniz Üyenin ID'sini Giriniz:"))
+    #with open('uye.json','r') as dosya:
+    #    veri = json.load(dosya)
+    veri = dosya_oku('uye.json')
+    for id in veri:
+        if id.get('id') == arama:
+            print(id)
+            break
+    else:
+        print(f'{arama} adlı Uye Kaydı Bulunmamaktadır!')
+
+
+
+#---------------
+#uye silme
+def uye_sil(silinecek_uye):
+    silincek = int(input("Silinecek Üye'nin ID'sini giriniz:"))
+    sil = dosya_oku('uye.json')
+
+    for silgi in sil:
+        if silgi['id'] == silincek:
+            print(f'{silgi} kayıtlı üye silinmiştir!')
+            sil.remove(silgi)
+            break
+    else:
+        print(f'{silincek} ID Numaralı üye bulunamamıştır.')
+
+    uye_guncelle(sil)
+
+
+
+#----------------
+# uye okuyucuya kitap verme (tarih islemlerini burada yapacaksin)
+def kitap_odunc_verme():
