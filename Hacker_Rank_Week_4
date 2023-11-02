@@ -1,0 +1,46 @@
+#Link 1 - Diagonal Difference 
+
+ # DOĞRU AMA TUM TESTLERDEN GEÇMİYOR.
+    #left = arr[0][0] + arr[1][1] + arr[2][2]
+    #right = arr[0][2] + arr[1][1] + arr[2][0]
+
+    #return abs(right - left)
+#--------------
+def diagonalDifference(arr):
+    # Write your code here
+    m = [[11, 2, 4],
+         [4, 5, 6],
+         [10, 8, -12]]
+    l = []
+    r = []
+    for i in range(len(m)):
+        l.append(m[i][i]) #Birinci döngüde 1.satır 1.sutun, 2.döngüde 2.satır 2.sutun, 3.dongude 3.satır 3.sutun ekliyor.
+
+    for j in range(len(m)):
+        r.append(m[-j - 1][j])  
+
+    # print(l)
+    # print(r)
+    # print(sum(l))
+    # print(sum(r))
+    #print(abs(sum(l) - sum(r)))
+    return abs(sum(l) - sum(r))
+
+#Link 2 - Left Rotation
+def rotateLeft(d, arr):
+    for i in range(d):
+        arr.append(arr.pop(0))
+    return arr
+
+
+#Link 3 - Counter game
+
+
+
+
+
+
+
+#Link 4 - Time Delta
+
+
