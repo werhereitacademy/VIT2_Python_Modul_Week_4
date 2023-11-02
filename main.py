@@ -1,5 +1,3 @@
-main.py
-
 import os
 import kitap_islemleri
 import uye_islemleri
