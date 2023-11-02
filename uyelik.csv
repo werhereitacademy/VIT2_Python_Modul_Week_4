@@ -1,0 +1,4 @@
+UYELER              = 1    -     KİTAP ÖDÜNÇ VERMEK     = 5
+UYE EKLEMEK         = 2    -     KİTAP İADE ETMEK       = 6
+UYE ARAMAK          = 3    -     KİTAP TAKİBİ           = 7
+UYE SİLMEK          = 4    -     ANA MENÜ İÇİN          = 9

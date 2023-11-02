@@ -1,0 +1,85 @@
+import time
+
+from kitap_islemleri import *
+from zaman import *
+from uye_islemleri import *
+import json
+import csv
+import sys
+from tabulate import tabulate
+
+with open('menu.csv', mode='r', encoding='utf-8') as dosyam:
+    okuyucu = csv.reader(dosyam)
+    for satir in okuyucu:
+        menu.append(satir)
+
+
+with open('uyelik.csv', mode='r', encoding='utf-8') as dosyam:
+    veri = csv.reader(dosyam)
+    for satir in veri:
+        uyelik.append(satir)
+
+
+with open('kitap.csv', mode='r', encoding='utf-8') as dosyam:
+    okuyc = csv.reader(dosyam)
+    for satir in okuyc:
+        ktp.append(satir)
+
+
+
+while True:
+    print(tabulate(menu))
+    try:
+        print("\t\t\tİŞLEMLER\t\t\t")
+
+    except Exception as hata:
+        print("Hata:  ",hata,end='\n\n')
+    tercih = input("Tercihinizi Yapınız:")
+    if tercih == '0':
+        print("Çıkış Yapılıyor...")
+        time.sleep(2)
+        print("Çıkış Yapıldı.")
+        break
+
+    else:
+        if tercih == '1':
+            print(tabulate(uyelik))
+            istek = input("İsteginizi Yapınız:")
+            if istek == '1':
+                uye_kontrol()
+            elif istek == '2':
+                uye_ekle(id=None,Uye_Adi=None,Tel=None,Adres=None)
+            elif istek == '3':
+                uye_ara()
+            elif istek == '4':
+                uye_sil(silinecek_uye=None)
+            elif istek == '5':
+                kitap_odunc_verme()
+            elif istek == '6':
+                kitap_iade()
+            elif istek == '7':
+                takip_oku()
+            elif istek == '9':
+                continue
+            else:
+                print('Yanlış Giriş Yaptınız! Lütfen Baştan Deneyiniz...')
+
+        elif tercih == '2':
+            print(tabulate(ktp))
+            secim = input("Seciminizi Yapınız:")
+            if secim == '1':
+                arsiv()
+            elif secim == '2':
+                kitap_ekle(Barkod=None, Dil=None, Fiyat=None, Kitap_Adi=None, Yayinevi=None, Yazar=None)
+            elif secim == '3':
+                kitap_ara(arama=None)
+            elif secim == '4':
+                kitap_sil(silinecek_veri=None)
+            elif secim == '9':
+                continue
+            else:
+                print('Yanlış Giriş Yaptınız! Lütfen Baştan Deneyiniz...')
+        else:
+            print("Yanlış Bir İşlem Yaptınız! Lütfen Tekrar Deneyiniz!... Tercihinizi Yapınız:")
+
+

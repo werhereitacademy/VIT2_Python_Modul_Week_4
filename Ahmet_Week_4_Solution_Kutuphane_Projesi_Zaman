@@ -1,0 +1,25 @@
+import time
+from datetime import datetime
+import timedelta
+import datetime
+
+
+def tarih():
+    baslangic = datetime.now()
+    odunc_suresi = datetime.timedelta (days=14)
+    bitis = baslangic + odunc_suresi
+
+    return baslangic.strftime("%d-%m-%Y, %I:%M - %p"), bitis.strftime("%d-%m-%Y, %I:%M - %p")
+
+#Burada kendi zaman programinizi olusturuyoruz
+#Ikı tarih return edilecek
+#   1- simdiki zamn(kayit tarihi ve saati)
+#   2- kitap 2 hafta sonra iade olacak tarih(yalnızca tarih yeterli)
+#örnek: alinan tarih: 20-09-2023, 10:38 - İade Tarihi: 04-10-2023
+
+
+
+if __name__ == '__main__':
+    print(tarih())
+    #suan()
+    #ozel()
