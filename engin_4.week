@@ -1,0 +1,339 @@
+#Main.py
+import kitap_islemleri
+import uye_islemleri
+import json
+import os
+
+
+while(True):
+    try:
+        print("HALK KUTUPHANEMIZE HOS GELDINIZ")
+        print("1 - UYELIK ISLEMLERI 1")
+        print("2 - KITAP ISLEMLERI 2")
+        print("3 - CIKIS 0")
+        secim=input("Lutfen yapmak istediginiz secimin kodunu girin : ", )
+        os.system('cls')
+        if secim == '1': #UYELIK ISLEMLERI
+            while True:
+                print("UYELER = 1              &    KITAP ODUNC VERME = 5")
+                print("UYE EKLEME = 2          &    KITAP IADE = 6  ")
+                print("UYE ARA = 3             &    KITAP TAKIBI = 7")
+                print("UYE SIL = 4             &    CIKIS = 0")
+                uye_secim=input("Lutfen işlem seciniz : ", )
+                if uye_secim=="1": 
+                    uye_islemleri.uye_listeleme()
+                elif uye_secim=="2": 
+                    uye_islemleri.uye_ekle()
+                elif uye_secim=="3": 
+                    uye_islemleri.uye_ara()
+                elif uye_secim=="4": 
+                    uye_islemleri.uye_sil()
+                elif uye_secim=="5": 
+                    uye_islemleri.kitap_odunc_verme()
+                elif uye_secim=="0": 
+                    break
+
+        elif secim == '2':
+            while True:
+                print("KITAPLAR = 1")
+                print("KITAP EKLEME = 2 ")
+                print("KITAP ARA = 3")
+                print("KITAP SIL = 4 ")
+                print("CIKIS = 0")
+                kitap_secim=input("Lutfen işlem seciniz : " )
+                if kitap_secim=="1": 
+                    kitap_islemleri.kitaplar()
+                elif kitap_secim=="2": 
+                    Kitap_Adi = input("Kitap adi giriniz : ")
+                    Yazar = input("Yazar giriniz : ")
+                    Yayinevi = input("Yayınevi giriniz : ")
+                    Barkod = input("Barkod giriniz : ")
+                    kitap_islemleri.kitap_ekle(Kitap_Adi, Yazar, Yayinevi, Barkod)
+                elif kitap_secim=="3": 
+                    ara= input("Aradığınız kitabın adını giriniz : ")
+                    kitap_islemleri.kitap_ara(ara)
+                elif kitap_secim=="4": 
+                    silinecek_kitap = input("Silinecek kitabın adını girin: ")
+                    kitap_islemleri.kitap_sil(silinecek_kitap.upper())
+                elif kitap_secim=="0": 
+                    break    
+        elif secim == '0':
+            print("Kütüphane programından çıkılıyor !...")
+            break
+
+    except Exception as hata:
+        print("Hata : ", hata, end='\n\n')
+
+#Uye_islemleri.py
+
+import kitap_islemleri
+import json
+import os
+import zaman
+
+
+#uye_id = 1
+
+#uye.json dosyasi yazma olusturma
+#def uye_guncelle(uye):
+
+
+# uye.json dosyasi yazma olusturma
+#def uye_kontrol():
+
+# uye ekle
+# `uye.json` dosyasından üye bilgilerini yükle
+
+try:
+    with open("uye.json", "r", encoding="utf-8") as json_dosyasi:
+        # Eğer dosya mevcutsa mevcut üye bilgilerini yükleyin
+        Uyeler = json.load(json_dosyasi)
+except FileNotFoundError:
+    # Eğer dosya bulunmuyorsa veya mevcut değilse, boş bir liste ile başlayın
+    Uyeler = []
+
+def uye_kontrol():
+    with open('uye.json', 'r',encoding="utf-8") as dosya:
+        json_verileri = dosya.read()
+        # print(type(json_verileri))    
+    # JSON verilerini bir Python veri yapısına dönüştürün (genellikle bir sözlük veya liste)
+    if json_verileri is not None:
+        uyeler = json.loads(json_verileri)
+
+    return uyeler
+
+def uye_ekle():
+    Uye_Adi = input("Uye adi giriniz : ")
+    Tel = input("Uye telefon giriniz : ")
+    Adres = input("Uye adres giriniz : ")
+    Uye = {
+        "Uye Numarası":  max(uye['Uye Numarası'] for uye in Uyeler) + 1,
+        "Uyenin Adı": Uye_Adi,
+        "Telefon": Tel,
+        "Adres": Adres
+    }
+    Uyeler.append(Uye)
+    print(f"{max(uye['Uye Numarası'] for uye in Uyeler)} id numarali {Uye_Adi} uyesi eklendi.")
+    with open("uye.json", "w", encoding="utf-8") as json_dosyasi:
+        json.dump(Uyeler, json_dosyasi, ensure_ascii=False, indent=4)
+
+
+def uye_listeleme():
+    for uye in Uyeler:
+        print(uye)
+    print("Kütüphanedeki aktif üye sayısı= ", len(Uyeler))
+
+
+
+# uye arama
+def uye_ara():
+    ara= input("Uye adı yada id giriniz : ")
+    for uye in Uyeler:
+        if ara==uye["Uyenin Adı"] or ara==str(uye["Uye Numarası"]):
+            print(uye)
+            break
+    else:
+        print("Aradığınız uye bulunamadı.")
+
+
+
+# uye_sil
+def uye_sil():
+    silinecek_uye = int(input("Silinecek uyenin numarasını girin: "))
+    for uye in Uyeler:
+        if uye["Uye Numarası"] == silinecek_uye:
+            Uyeler.remove(uye)
+            print(f"'{uye['Uyenin Adı']}' isimli uye silindi.")
+            break
+    else:
+        print("Belirtilen uye numarasına sahip uye bulunamadı.")
+    with open("uye.json", "w", encoding="utf-8") as json_dosyasi:
+        json.dump(Uyeler, json_dosyasi, ensure_ascii=False, indent=4)
+
+
+
+# uye okuyucuya kitap verme (tarih islemlerini burada yapacaksin)
+def takip_yaz(veri):
+    with open('takip.json', 'w',encoding="utf-8") as json_dosya:
+        json.dump(veri, json_dosya ,indent=3,ensure_ascii=False)
+        # Şimdi veriyi kullanabilirsiniz
+        print("Kitap Takip Verileri Guncellendi.")
+
+def takip_oku():
+    with open('takip.json', 'r',encoding="utf-8") as dosya:
+        json_verileri = dosya.read()
+    # print(type(json_verileri))
+
+def kitap_odunc_verme():
+    aranan_kitap=input("Hangi kitap isteniyor ==> : ").lower()
+    istek=kitap_islemleri.kitap_ara(aranan_kitap)
+    try:
+        # print(istek)
+        if istek!=[]:
+            barkod=input(" Kitabin Barkod Numarasini Giriniz : ")
+            odunc_kitap=kitap_islemleri.kitap_ara(barkod)
+            # print("odunc",odunc_kitap)
+
+            if odunc_kitap!=[]:                
+                musteri=input("Musterinin Adi , veya id ").lower()
+                uyeler=uye_kontrol()
+                sayi=len(uyeler)
+                # print(sayi)
+                sonuc=[]
+                for i in range(sayi):
+
+                    if musteri == uyeler[i]["Uye Adi"].lower() or musteri == str(uyeler[i]["id"] )  :
+
+                        x=f"""   
+                        "id":{uyeler[i]["id"]},
+                        "Uye Adi":{uyeler[i]["Uye Adi"]},   
+                        "Tel":{uyeler[i]["Tel"]}, 
+                        "Adres":{uyeler[i]["Adres"]}            
+                        """
+                        print(x)
+                        sonuc.append(uyeler[i])
+                        break
+
+                if sonuc==[]:
+                    print("Bu isimde Kayit Bulunmamaktadir Lutfen Kayit olunuz ")
+
+                else:
+                    # print(sonuc)
+                    dosya_adı = "takip.json"
+            # dosya kontrolu 
+                    if os.path.exists(dosya_adı):
+                        su_an,bitis_tarihi=zaman.tarih()
+                        tarih={"Kayit Tarihi":su_an,"Kitap iade Tarihi":bitis_tarihi}
+                        # print(su_an,bitis_tarihi)
+                        odunc_verisi = {**sonuc[0],**odunc_kitap[0],**tarih}
+                        print(odunc_verisi)
+                        oku=takip_oku()
+                        oku.append(odunc_verisi)  
+                        takip_yaz(oku)  
+                        up_date=kitap_islemleri.oku()     
+                        up_date.remove(odunc_kitap[0])  
+                        kitap_islemleri.kayit(up_date)
+
+
+                    else:
+                        print("takip dosyasi ilk kurulum icin hazilaniyor sonra tekrar deneyin",end='\n')
+                        takip_yaz([])
+            else:
+
+                print("Barkod Yanlis veya Kitap Odunc Verildi",end='\n')
+        else:
+            print("Bu kitap elimizde yok",end='\n')
+    except Exception as hata:
+    # Diğer tüm hataların (Exception) yakalandığında yapılacaklar
+        print("Lutfen Verileri dogru girdiginizden emin olun. Hata: ",hata)
+
+
+#Kitap_islemleri.py
+import json
+import os
+
+
+#kitap.json dosyasi okunur
+try:
+    with open("kitap.json", "r", encoding="utf-8") as json_dosyasi:
+        Kitaplar = json.load(json_dosyasi)
+            # Eğer dosya mevcutsa mevcut üye bilgilerini yükleyin
+except FileNotFoundError: # Eğer dosya bulunmuyorsa veya mevcut değilse, boş bir liste ile başlayın
+    Kitaplar = []
+
+# kitap.json dosyasina verileri yazdirir
+def kayit(veri):
+    with open("kitap.json", "w", encoding="utf-8") as json_dosyasi:
+        json.dump(Kitaplar , json_dosyasi, ensure_ascii=False, indent=4)
+
+def kitaplar():
+
+    for kitap in Kitaplar:
+        print(kitap)
+    print("Kütüphanede bulunan kitap sayısı= ", len(Kitaplar))
+
+# kitap ekleme
+def kitap_ekle(Kitap_Adi, Yazar, Yayinevi, Barkod):
+    kitap = {
+        "Barkod": Barkod,
+        "Dil": "Türkçe",
+        "Fiyat": 0,
+        "Kitap_Adi": Kitap_Adi,
+        "Yayinevi": Yayinevi,
+        "Yazar": Yazar
+    }
+    Kitaplar.append(kitap)
+    print(f"{kitap['Barkod']} barkodlu {Kitap_Adi} kitabı eklendi.")
+    with open("kitap.json", "w", encoding="utf-8") as json_dosyasi:
+        json.dump(Kitaplar, json_dosyasi, ensure_ascii=False, indent=4)
+
+# kitap silme
+def kitap_sil(silinecek_veri):
+    for kitap in Kitaplar:
+        if kitap["Kitap_Adi"].upper() == silinecek_veri:
+            Kitaplar.remove(kitap)
+            print(f"'{kitap['Kitap_Adi']}' isimli kitap silindi.")
+            break
+    else:
+        print("Belirtilen kitap bulunamadı.")
+    with open("kitap.json", "w", encoding="utf-8") as json_dosyasi:
+        json.dump(Kitaplar, json_dosyasi, ensure_ascii=False, indent=4)
+    pass
+# kitap arama
+def kitap_ara(ara):
+    bulunan_kitap=[]
+    for kitap in Kitaplar:
+        if ara.lower() in kitap["Kitap_Adi"].lower() or ara in str(kitap["Barkod"]):
+            bulunan_kitap.append(kitap)
+
+    print(*bulunan_kitap, sep="\n")
+
+    if len(bulunan_kitap)==0 :
+        print("Aradığınız kitap bulunamadı")
+
+
+#takip.json
+
+from datetime import datetime, timedelta
+import json
+
+def tarih():
+    simdiki_zaman = datetime.now()
+    iade_tarihi = simdiki_zaman + timedelta(days=14)
+
+
+    simdiki_zaman_str = simdiki_zaman.strftime("%d-%m-%Y %H:%M")
+    iade_tarihi_str = iade_tarihi.strftime("%d-%m-%Y")
+
+
+    # JSON verisini oluşturun
+    kitap_bilgisi = {
+        "odunc_tarihi": simdiki_zaman_str,
+        "iade_tarihi": iade_tarihi_str
+    }
+
+    # JSON dosyasını açın veya oluşturun
+    with open("takip.json", "w") as json_dosyasi:
+        # JSON verisini dosyaya yazın
+        json.dump(kitap_bilgisi, json_dosyasi)
+    return f"alinan tarih : {simdiki_zaman_str}, | iade tarihi: {iade_tarihi_str}"
+
+
+#print("alinan tarih :", simdiki_zaman_str, " | ", "iade tarihi:", iade_tarihi_str)
+
+
+if __name__ == "__main__":
+    print(tarih())
+#
+#
+#
+#
+#
+#
+# Kitap ödünç verme işlemi yapılırken mutlak suretle
+# kitabin ödünç verildigi tarih ve saat ve 2 hafta sonra iade edecek şekilde tarih bilgisi eklenmelidir
+# ve bu bilgiler takip.json dosyasına kaydedilmelidir
+#
+#
+# bu işlemi kendi oluşturduğumuz zaman py modulunden yapacağız.
+# alinan tarih : 20-09-2023 , 10:38 | iade tarihi : 04-10-202
